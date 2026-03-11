@@ -41,7 +41,7 @@ app.post('/match', upload.fields([{ name: 'resume', maxCount: 1 }, { name: 'jd',
         const jdData = parseJD(jdFile.path);
 
         // Match
-        const matchResult = matchJob(resumeData, jdData, "JD_" + Date.now(), "Software Engineer");
+        const matchResult = matchJob(resumeData, jdData, "JD_" + Date.now(), jdData.jobTitle || "Not specified");
 
         // Clean up uploaded files (optional but good practice)
         fs.unlinkSync(resumeFile.path);

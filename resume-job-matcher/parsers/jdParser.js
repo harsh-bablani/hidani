@@ -32,9 +32,17 @@ function parseJD(filePath) {
     const lines = text.split('\n');
     let currentSection = 'about';
     let aboutRole = [];
+    let jobTitle = "Not specified";
 
     for (const line of lines) {
         const lowerLine = line.trim().toLowerCase();
+
+        if (lowerLine.startsWith('job title') || lowerLine.startsWith('role') || lowerLine.startsWith('position')) {
+            const parts = line.split(':');
+            if (parts.length > 1) {
+                jobTitle = parts[1].trim();
+            }
+        }
 
         if (lowerLine.includes('responsibilities') || lowerLine.includes('what you will do') ||
             lowerLine.includes('requirements') || lowerLine.includes('qualifications') ||
@@ -45,7 +53,7 @@ function parseJD(filePath) {
         }
 
         if (line.trim().length > 0) {
-            if (currentSection === 'about') {
+            if (currentSection === 'about' && !lowerLine.startsWith('job title') && !lowerLine.startsWith('role:') && !lowerLine.startsWith('position:') && !lowerLine.startsWith('location')) {
                 aboutRole.push(line.trim());
             }
         }
@@ -57,7 +65,8 @@ function parseJD(filePath) {
         salary: salary,
         experience: experience,
         skills: [...new Set(extractedSkills)],
-        aboutRole: aboutText || "No description provided."
+        aboutRole: aboutText || "No description provided.",
+        jobTitle: jobTitle
     };
 }
 
