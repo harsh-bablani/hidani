@@ -1,0 +1,15 @@
+Job Title: Backend Developer
+Location: Remote
+
+About the Role
+We are looking for a highly skilled Backend Developer to join our core engineering team. You will be responsible for backend development of our highly scaled distributed systems.
+
+Requirements
+- 3+ years of experience in software development
+- Proficiency in Java and Spring Boot
+- Experience with message queues like Kafka
+- Knowledge of cloud platforms like AWS
+- Familiarity with containerization using Docker
+
+Compensation
+CTC: ₹15,00,000 per annum + Equity
